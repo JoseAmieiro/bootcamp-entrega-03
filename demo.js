@@ -1,21 +1,30 @@
-const product = { count: 21, price: 12.55, type: "ropa" };
+const product = { count: 1, price: 12.55, type: "ropa"};
 
-let precioSinIva = product.count * product.price;
-console.log(precioSinIva);
+let precioSinIva; 
+
+if(product.count < 0) {
+    precioSinIva = 0;
+} else {
+    precioSinIva = product.count * product.price;
+}
+
+console.log("precio sin iva:" ,precioSinIva);
 
 let iva;
 
-if (product.type === "alimentacion") {
-    iva = 0.1;
-    
-} else if (product.type === "libro") {
-    iva = 0.04;
-} else {
-    iva = 0.21;    
+switch (product.type) {
+    case "alimentacion":
+        iva = 0.10;        
+        break;
+     case "libro":
+        iva = 0.04;        
+         break;
+     default: iva = 0.21;
 }
 
-console.log(iva);
+console.log("tipo de iva: " ,iva);
 
 let precioTotal = precioSinIva + (precioSinIva*iva);
 
-console.log(precioTotal);
+console.log("precio total: " ,precioTotal);
+
